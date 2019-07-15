@@ -21,3 +21,27 @@ func TestAdd(t *testing.T) {
 	l.Add(test1)
 	fmt.Println(l)
 }
+
+func TestCheck(t *testing.T) {
+	l := LRUCache{
+		list.New(),
+		make(map[string]*list.Element),
+		4,
+	}
+	fmt.Println(l.Check("privet"))
+	l.Add("privet")
+	fmt.Println(l.Check("privet"))
+}
+
+func TestRemove(t *testing.T) {
+	l := LRUCache{
+		list.New(),
+		make(map[string]*list.Element),
+		4,
+	}
+	l.Add("privet")
+	fmt.Println(l.Check("privet"))
+	l.Remove("privet")
+	fmt.Println(l.Check("privet"))
+
+}
