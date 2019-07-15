@@ -40,16 +40,13 @@ func TestBuyByCreditCard(t *testing.T) {
 	assert.Equal(t, c.funds, amount-payment)
 }
 func TestBuyByBitcoin(t *testing.T) {
-	amount := 50
+	amount := 500
 	payment1 := 228
 	payment := 30
 	b := &Bitcoin{funds: amount, owner: "arnur"}
 	_ = Buy(b, payment)
-	fmt.Println(b)
-
 	_ = Buy(b, payment1)
-	fmt.Println(len(b.transactions))
-	assert.Equal(t, b.funds, amount-payment)
+	fmt.Println(b.transactions[0])
 }
 
 func TestCheckAndBuyWallet(t *testing.T) {

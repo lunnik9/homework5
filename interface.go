@@ -81,7 +81,7 @@ func (b *Bitcoin) Pay(amount int) error {
 	if len(b.transactions) != 0 {
 		newTransaction = Transaction{
 			b.funds - beforeTransaction,
-			time.Time{},
+			time.Now(),
 			convertToNextTransaction(b.transactions[len(b.transactions)-1].sumOfTransaction, b.transactions[len(b.transactions)-1].transactionTime, b.transactions[len(b.transactions)-1].previousTransaction),
 		}
 
@@ -89,7 +89,7 @@ func (b *Bitcoin) Pay(amount int) error {
 	} else {
 		newTransaction = Transaction{
 			b.funds - beforeTransaction,
-			time.Time{},
+			time.Now(),
 			"",
 		}
 		b.transactions = append(b.transactions, newTransaction)
@@ -140,6 +140,5 @@ func CheckPaymentType(p Payer) interface{} {
 }
 
 func convertToNextTransaction(sumOfTransaction int, transactionTime time.Time, previousTransaction string) string {
-	fmt.Println(sumOfTransaction, transactionTime, previousTransaction)
 	return HashTransaction(fmt.Sprintf(strconv.Itoa(sumOfTransaction), transactionTime, previousTransaction))
 }
