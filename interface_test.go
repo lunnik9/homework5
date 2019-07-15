@@ -46,7 +46,7 @@ func TestBuyByBitcoin(t *testing.T) {
 	b := &Bitcoin{funds: amount, owner: "arnur"}
 	_ = Buy(b, payment)
 	_ = Buy(b, payment1)
-	fmt.Println(b.transactions[0])
+	fmt.Println(b)
 }
 
 func TestCheckAndBuyWallet(t *testing.T) {

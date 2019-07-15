@@ -65,6 +65,7 @@ func (w *Wallet) Pay(amount int) error {
 	w.funds -= amount
 	return nil
 }
+
 func (c *CreditCard) Pay(amount int) error {
 	if c.funds < amount {
 		return errors.New("not enough founds")
@@ -87,6 +88,7 @@ func (b *Bitcoin) Pay(amount int) error {
 
 		b.transactions = append(b.transactions, newTransaction)
 	} else {
+		b.funds -= amount
 		newTransaction = Transaction{
 			b.funds - beforeTransaction,
 			time.Now(),
