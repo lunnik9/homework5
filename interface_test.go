@@ -71,3 +71,7 @@ func TestBitcoin(t *testing.T) {
 	b := &Bitcoin{funds: 20, owner: "arnur"}
 	fmt.Println(b.transactions[0].previousTransaction)
 }
+func TestGetFundsCredit(t *testing.T) {
+	w := &Wallet{50}
+	fmt.Println(w.GetFunds())
+}

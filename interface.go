@@ -88,7 +88,6 @@ func (b *Bitcoin) Pay(amount int) error {
 
 		b.transactions = append(b.transactions, newTransaction)
 	} else {
-		b.funds -= amount
 		newTransaction = Transaction{
 			b.funds - beforeTransaction,
 			time.Now(),
